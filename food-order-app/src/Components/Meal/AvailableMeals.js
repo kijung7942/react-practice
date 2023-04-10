@@ -1,8 +1,7 @@
-import React, { Fragment } from "react";
+import React from "react";
+import Card from "../UI/Card/Card";
 import classes from "./AvailableMeals.module.css";
 import MealItem from "./MealItem";
-import Card from "../UI/Card/Card";
-import DummyMeal from "../../store/dummy-meals";
 
 const DUMMY_MEALS = [
   {
