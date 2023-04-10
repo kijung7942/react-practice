@@ -1,18 +1,11 @@
-// import React, {useState} from 'react';
+import React from 'react';
 
 
-// const CartContext = React.createContext({});
+const CartContext = React.createContext({
+	items: [],
+	totalAmount: 0,
+	addItem: (item) => {},
+	removeItem: (id) => {},
+});
 
-// const CartContextProvider = (props) => {
-//     const [meals, setMeals] = useState({
-
-//     })
-
-
-//     return <CartContext.Provider>
-//         {props.children}
-//     </CartContext.Provider>
-// }
-
-
-// export default CartContext;
+export default CartContext;

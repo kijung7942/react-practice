@@ -1,30 +1,25 @@
-import React, { useContext, useEffect, useState } from "react";
-import classes from "./HeaderCartButton.module.css";
+import React, { useContext } from "react";
+import CartContext from "../../../store/cart-context";
 import CartIcon from "../../Cart/CartIcon";
-import DummyMeal from "../../../store/dummy-meals";
+import classes from "./HeaderCartButton.module.css";
 
-function HeaderCartButton() {
-  const mealCtx = useContext(DummyMeal);
-  const [totalAmt, setTotalAmt] = useState(0);
+const HeaderCartButton = (props) => {
+	const cartCtx = useContext(CartContext);
 
-  useEffect(() => {
-    setTotalAmt((totalAmt) => {
-      totalAmt = 0;
-      return mealCtx.meals
-        .map((m) => +m.amount)
-        .reduce((acc, cur) => acc + cur, 0);
-    });
-  }, [mealCtx.meals, totalAmt]);
+	const numberOfCartItems = cartCtx.items.reduce((acc, cur) => {
+		return acc = acc + cur.amount;
+	}, 0);
 
-  return (
-    <div>
-      <button className={classes.button}>
-        <CartIcon className={classes.icon} />
-        <span>Your Cart</span>
-        <span className={classes.badge}>{totalAmt}</span>
-      </button>
-    </div>
-  );
-}
+	return (
+		<button className={classes.button} onClick={props.onClick}>
+			<span>
+				<CartIcon className={classes.icon} />
+			</span>
+
+			<span>Your Cart</span>
+			<span className={classes.badge}>{numberOfCartItems}</span>
+		</button>
+	);
+};
 
 export default HeaderCartButton;
