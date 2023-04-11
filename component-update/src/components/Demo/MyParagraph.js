@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MyParagraph = (props) => {
-	console.log("DemoOutput Running!")
+	console.log("MyParagraph Running!")
 	return <p>{props.show ? 'This is new!' : ''}</p>
 }
 
