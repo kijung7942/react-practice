@@ -6,4 +6,4 @@ const DemoOutput = (props) => {
 	return <MyParagraph show={props.show}></MyParagraph>
 }
 
-export default React.memo(DemoOutput);
+export default DemoOutput;
