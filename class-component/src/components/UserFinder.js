@@ -1,8 +1,8 @@
-import { Fragment, Component } from "react";
+import { Component, Fragment } from "react";
+import UsersContext from "../store/users-context";
 import classes from "./UserFinder.module.css";
 import Users from "./Users";
-import UsersContext from "../store/users-context";
-
+import ErrorBoundary from "./ErrorBoundary";
 
 class UserFinder extends Component {
   static contextType = UsersContext;
@@ -16,9 +16,9 @@ class UserFinder extends Component {
   }
 
   componentDidMount() {
-    console.log(this.context)
+    console.log(this.context);
     // HTTP 요청 등.. (useEffect에 빈배열을 의존성으로 준 경우와 같음.)
-    this.setState({filteredUsers: this.context.users});
+    this.setState({ filteredUsers: this.context.users });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -32,20 +32,27 @@ class UserFinder extends Component {
     }
   }
 
-
   searchChangeHandler(event) {
     this.setState({
       searchTerm: event.target.value,
     });
   }
 
+  clickHandler() {
+    this.setState({
+      searchTerm: '',
+    })
+  }
+
   render() {
     return (
       <Fragment>
-          <div className={classes.finder}>
-            <input type="search" onChange={this.searchChangeHandler.bind(this)} />
-          </div>
+        <div className={classes.finder}>
+          <input type="search" value={this.state.searchTerm} onChange={this.searchChangeHandler.bind(this)} />
+        </div>
+        <ErrorBoundary onClick={this.clickHandler.bind(this)}>
           <Users users={this.state.filteredUsers} />
+        </ErrorBoundary>
       </Fragment>
     );
   }
