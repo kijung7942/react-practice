@@ -13,12 +13,14 @@ class Users extends Component {
     super();
     this.state = {
       showUsers: true,
+      testState: 'TestState'
     };
   }
 
   toggleUsersHandler() {
-    // this.state.showUsers = false; => 이렇게 하면 안됨
+    // this.state.showUsers = false; => 이렇게 하면 안됨.
     this.setState((curState) => {
+      console.log(curState);
       return { showUsers: !curState.showUsers };
     });
   }
