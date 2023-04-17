@@ -2,6 +2,11 @@ import classes from "./User.module.css";
 import { Component } from "react";
 
 class User extends Component {
+  componentWillUnmount() {
+    // useEffect에서 return 하는 cleanUp 함수와 같음.
+    console.log("User will unmount!")
+  }
+
   render() {
     return <li className={classes.user}>{this.props.name}</li>;
   }
