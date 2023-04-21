@@ -1,72 +1,56 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from 'react';
 
 const SimpleInput = (props) => {
-	const nameInput = useRef();
-	const [enteredName, setEnteredName] = useState("");
-	const [enteredNameIsValid, setEnteredNameIsValid] = useState(true);
-	const [enteredNameTouched, setEnteredNameTouched] = useState(false)
+  const [enteredName, setEnteredName] = useState('');
+  const [enteredNameTouched, setEnteredNameTouched] = useState(false);
 
-	useEffect(() => {
-		if(enteredNameIsValid) {
-			console.log("name input is Valid")
-		}
-	}, [enteredNameIsValid])
+  const enteredNameIsValid = enteredName.trim() !== '';
+  const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
-	const nameInputChangeHandler = (event) => {
-		setEnteredName(event.target.value);
-	};
+  const nameInputChangeHandler = (event) => {
+    setEnteredName(event.target.value);
+  };
 
-	const formSubmitHandler = (event) => {
-		event.preventDefault();
+  const nameInputBlurHandler = event => {
+    setEnteredNameTouched(true);
+  };
 
-		setEnteredNameTouched(true);
+  const formSubmissionHandler = (event) => {
+    event.preventDefault();
+    setEnteredNameTouched(true);
 
-		if (!enteredName.trim()) {
-			setEnteredNameIsValid(false);
-			return;
-		}
-		setEnteredNameIsValid(true);
-		console.log(enteredName);
+    if (!enteredNameIsValid) {
+      return;
+    }
 
-		const enteredValue = nameInput.current.value;
-		console.log(enteredValue);
+    setEnteredName('');
+    setEnteredNameTouched(false);
+  };
 
-		// nameInput.current.value = ''; // 리액트를 사용할때 좋은 방법이 아님.
-		setEnteredName("");
-	};
+  const nameInputClasses = nameInputIsInvalid
+    ? 'form-control invalid'
+    : 'form-control';
 
-	const nameInputBlurHandler = (event) => {
-		setEnteredNameTouched(true);
-
-		if (!enteredName.trim()) {
-			setEnteredNameIsValid(false);
-			return;
-		}
-		
-	}
-
-	const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
-
-	const nameInputClasses = nameInputIsInvalid ? 'form-control invalid': 'form-control'
-	return (
-		<form onSubmit={formSubmitHandler} className={nameInputClasses}>
-			<div className="form-control">
-				<label htmlFor="name">Your Name</label>
-				<input
-					ref={nameInput}
-					value={enteredName}
-					type="text"
-					id="name"
-					onChange={nameInputChangeHandler}
-					onBlur={nameInputBlurHandler}
-				/>
-				{nameInputIsInvalid && <p className='error-text'>Name must not be empty.</p>}
-			</div>
-			<div className="form-actions">
-				<button>Submit</button>
-			</div>
-		</form>
-	);
+  return (
+    <form onSubmit={formSubmissionHandler}>
+      <div className={nameInputClasses}>
+        <label htmlFor='name'>Your Name</label>
+        <input
+          type='text'
+          id='name'
+          onChange={nameInputChangeHandler}
+          onBlur={nameInputBlurHandler}
+          value={enteredName}
+        />
+        {nameInputIsInvalid && (
+          <p className='error-text'>Name must not be empty.</p>
+        )}
+      </div>
+      <div className='form-actions'>
+        <button>Submit</button>
+      </div>
+    </form>
+  );
 };
 
 export default SimpleInput;
