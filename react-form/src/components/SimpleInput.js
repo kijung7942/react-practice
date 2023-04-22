@@ -1,11 +1,20 @@
 import { useState } from "react";
+import useInput from "../hooks/use-input";
 
 const SimpleInput = (props) => {
-	const [enteredName, setEnteredName] = useState("");
-	const [enteredNameTouched, setEnteredNameTouched] = useState(false);
+	const {
+		value: enteredName,
+		isValid: enteredNameIsValid,
+		hasError: nameInputIsInvalid,
+		valueChangeHandler: nameInputChangeHandler,
+		inputBlurHandler: nameInputBlurHandler,
+		reset: resetNameInput
+	} = useInput((value) => value.trim() !== "");
+	// const [enteredName, setEnteredName] = useState("");
+	// const [enteredNameTouched, setEnteredNameTouched] = useState(false);
 
-	const enteredNameIsValid = enteredName.trim() !== "";
-	const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
+	// const enteredNameIsValid = enteredName.trim() !== "";
+	// const nameInputIsInvalid = !enteredNameIsValid && enteredNameTouched;
 
 	const [enteredEmail, setEnteredEmail] = useState("");
 	const [enteredEmailTouched, setEnteredEmailTouched] = useState(false);
@@ -18,13 +27,13 @@ const SimpleInput = (props) => {
 		formIsValid = true;
 	}
 
-	const nameInputChangeHandler = (event) => {
-		setEnteredName(event.target.value);
-	};
+	// const nameInputChangeHandler = (event) => {
+	// 	setEnteredName(event.target.value);
+	// };
 
-	const nameInputBlurHandler = (event) => {
-		setEnteredNameTouched(true);
-	};
+	// const nameInputBlurHandler = (event) => {
+	// 	setEnteredNameTouched(true);
+	// };
 
 	const emailInputChangeHandler = (event) => {
 		setEnteredEmail(event.target.value);
@@ -36,7 +45,7 @@ const SimpleInput = (props) => {
 
 	const formSubmissionHandler = (event) => {
 		event.preventDefault();
-		setEnteredNameTouched(true);
+		// setEnteredNameTouched(true);
 		setEnteredEmailTouched(true);
 
 		if (!enteredNameIsValid) {
@@ -47,8 +56,9 @@ const SimpleInput = (props) => {
 			return;
 		}
 
-		setEnteredName("");
-		setEnteredNameTouched(false);
+		// setEnteredName("");
+		// setEnteredNameTouched(false);
+		resetNameInput();
 		setEnteredEmail("");
 		setEnteredEmailTouched(false);
 	};
