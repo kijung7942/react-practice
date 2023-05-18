@@ -36,53 +36,13 @@ const cartSlice = createSlice({
         state.items = state.items.filter((item) => item.id !== id);
       }
     },
+    replaceCart(state, action) {
+      state.items = action.payload.items;
+    }
   },
 });
 
-export const sendCartData = (cart) => {
-  return async (dispatch) => {
-    dispatch(
-      uiActions.showNotification({
-        status: "pending",
-        title: "Sending...",
-        message: "Sending cart data!",
-      })
-    );
 
-    const sendRequest = async () => {
-      const response = await fetch(
-        "https://react-h-c800f-default-rtdb.firebaseio.com/cart.json",
-        {
-          method: "PUT",
-          body: JSON.stringify(cart),
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error();
-      }
-    };
-
-    try {
-      await sendRequest();
-      dispatch(
-        uiActions.showNotification({
-          status: "success",
-          title: "Success!",
-          message: "Sent cart data success!",
-        })
-      );
-    } catch (error) {
-      dispatch(
-        uiActions.showNotification({
-          status: "error",
-          title: "Error!",
-          message: "Sent cart data success!",
-        })
-      );
-    }
-  };
-};
 
 
 
