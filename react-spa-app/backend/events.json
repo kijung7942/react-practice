@@ -1,11 +1,1 @@
-{
-  "events": [
-    {
-      "id": "e1",
-      "title": "A dummy event",
-      "date": "2023-02-22",
-      "image": "https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg",
-      "description": "Join this amazing event and connect with fellow developers."
-    }
-  ]
-}
+{"events":[{"title":"test2","image":"https://www.josephriggio.com/wp-content/uploads/2019/04/Upcoming-Events-Neon-Text-Vector.-Neon-sign-design-template-modern-trend-design-night-neon-signboard-night-bright-advertising-light-banner-light-art.-Vector-illustration-10482900903647x2735.jpeg","date":"2023-05-15","description":"asdzxcv","id":"5d8e6299-ce27-44a2-896f-c82c42d8bb77"},{"title":"test1","image":"https://www.bing.com/images/search?view=detailV2&ccid=mDhh1YLH&id=52D2C83BEA6C8AFCFA2EC0D68560D5C05932A2DD&thid=OIP.mDhh1YLHaBacokQ0D_dSYQHaFj&mediaurl=https%3a%2f%2fwww.josephriggio.com%2fwp-content%2fuploads%2f2019%2f04%2fUpcoming-Events-Neon-Text-Vector.-Neon-sign-design-template-modern-trend-design-night-neon-signboard-night-bright-advertising-light-banner-light-art.-Vector-illustration-10482900903647x2735.jpeg&exph=2733&expw=3644&q=events&simid=608033164768800212&FORM=IRPRST&ck=1BAF0E7A1C4FE558DBDE4CA6C24B02A2&selectedIndex=1","date":"2023-05-17","description":"asdxz","id":"93fd1d8e-6ad3-4840-97e2-9e92f7ca3146"},{"id":"e1","title":"A dummy event","date":"2023-02-22","image":"https://blog.hubspot.de/hubfs/Germany/Blog_images/Optimize_Marketing%20Events%20DACH%202021.jpg","description":"Join this amazing event and connect with fellow developers."}]}
