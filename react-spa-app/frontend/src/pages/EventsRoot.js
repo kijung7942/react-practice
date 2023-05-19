@@ -3,14 +3,13 @@ import { Outlet } from 'react-router-dom'
 import EventsNavigation from '../components/EventsNavigation'
 import MainNavigation from '../components/MainNavigation'
 
-const EventRootLayout = () => {
+const EventsRootLayout = () => {
   return (
     <>
-    <MainNavigation></MainNavigation>
     <EventsNavigation></EventsNavigation>
     <Outlet></Outlet>
     </>
   )
 }
 
-export default EventRootLayout
+export default EventsRootLayout
