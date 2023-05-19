@@ -5,6 +5,7 @@ import NewEventPage from './pages/NewEvent';
 import RootLayout from './pages/Root';
 import EventsDetailPage from './pages/EventsDetail';
 import EditEventPage from './pages/EditEvent';
+import EventRootLayout from './pages/EventRoot';
 
 // Challenge / Exercise
 
@@ -32,11 +33,14 @@ const route = createBrowserRouter([
   {
     path: "/", element: <RootLayout></RootLayout>, children: [
       { index: true, element: < HomePage></HomePage> },
-      { path: "events", element: < EvnetsPage></EvnetsPage> },
-      { path: "events/:eventId", element: < EventsDetailPage></EventsDetailPage> },
-      { path: "events/new", element: < NewEventPage></NewEventPage> },
-      { path: "events/:eventId/edit", element: < EditEventPage></EditEventPage> },
-
+    ],
+  },
+  {
+    path: "/events", element: <EventRootLayout></EventRootLayout>, children: [
+      { index:true, element: < EvnetsPage></EvnetsPage> },
+      { path: ":eventId", element: < EventsDetailPage></EventsDetailPage> },
+      { path: "new", element: < NewEventPage></NewEventPage> },
+      { path: ":eventId/edit", element: < EditEventPage></EditEventPage> },
     ]
   }
 ]);
