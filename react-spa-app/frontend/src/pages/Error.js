@@ -18,6 +18,7 @@ const ErrorPage = () => {
   return (
     <PageContent title={title}>
         <p>{message}</p>
+        {error.message}
     </PageContent>
   )
 }
