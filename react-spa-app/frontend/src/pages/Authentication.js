@@ -39,5 +39,11 @@ export async function action({ request }) {
   }
 
   //TODO: manage auth token
+  const resData = await response.json();
+  const token = resData.token;
+
+  window.localStorage.setItem('token', token);
+
+
   return redirect('/');
 }
